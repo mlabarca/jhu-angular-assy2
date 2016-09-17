@@ -41,7 +41,7 @@
        </li>
 
      </ul>
-     <div class="emptyMessage">Everything is bought!</div>
+     <div class="emptyMessage" ng-if='toBuyCtrl.toBuyItems.length < 1'>Everything is bought!</div>
     </div>
 
     <!-- Already Bought List -->
@@ -52,7 +52,7 @@
          Bought {{item.quantity}} {{item.name}}
        </li>
      </ul>
-     <div class="emptyMessage">Nothing bought yet.</div>
+     <div class="emptyMessage" ng-if='boughtCtrl.boughtItems.length < 1'>Nothing bought yet.</div>
     </div>
   </div>
 </div>
