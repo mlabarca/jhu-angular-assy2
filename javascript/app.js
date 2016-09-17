@@ -8,12 +8,15 @@
   ToBuyShoppingController.$inject = ['$scope', 'ShoppingListCheckOffService'];
   function ToBuyShoppingController($scope, ShoppingListCheckOffService) {
     var toBuyCtrl = this; 
-    toBuyCtrl.toBuyItems = ShoppingListCheckOffService.toBuyItems; 
+    toBuyCtrl.toBuyItems = ShoppingListCheckOffService.toBuyItems;
+    toBuyCtrl.buyItem = function(index){
+      ShoppingListCheckOffService.buyItem(index);
+    }; 
   }
   AlreadyBoughtShoppingController.$inject = ['$scope', 'ShoppingListCheckOffService'];
   function AlreadyBoughtShoppingController($scope, ShoppingListCheckOffService) {
     var boughtCtrl = this;
-    boughtCtrl.boughItems = ShoppingListCheckOffService.boughItems;
+    boughtCtrl.boughtItems = ShoppingListCheckOffService.boughtItems;
   }
 
   function ShoppingListCheckOffService(){
@@ -25,11 +28,11 @@
       { name: "Art Brut Album", quantity: 1 },
       { name: "Couch", quantity: 1 },
     ];
-    service.boughItems = [];
+    service.boughtItems = [];
 
     service.buyItem = function(itemIndex){
       var boughtItem = service.toBuyItems.splice(itemIndex, 1);
-      service.boughItems.push(boughtItem);
+      service.boughtItems.push(boughtItem[0]);
     }
   }
 })();
